@@ -50,3 +50,57 @@ label = '$\mu=%d$, $\sigma=%d$' % (mu, sigma)
 thinkplot.Plot(xs1, ys1, label=label)
 thinkplot.Show()
 '''
+
+'''
+#This is exercise 6.1:
+
+import numpy as np
+import density
+import hinc
+import thinkplot
+import thinkstats2
+
+def InterpolateSample(df, log_upper = 6.0):
+    df['log_upper'] = np.log10(df.income)
+    df['log_lower'] = df.log_upper.shift(1)
+    df['log_lower'][0] = 3.0
+    df['log_upper'][41] = log_upper
+
+    arrays = []
+    for _, row in df.iterrows():
+        vals = np.linspace(row.log_lower, row.log_upper, row.freq)
+        arrays.append(vals)
+    log_sample = np.concatenate(arrays)
+    return log_sample
+
+df = hinc.ReadData()
+log_sample = InterpolateSample(df)
+
+log_cdf = thinkstats2.Cdf(log_sample)
+thinkplot.Cdf(log_cdf)
+thinkplot.Show(xlabel = 'household income', ylabel = 'CDF')
+
+sample = np.power(10, log_sample)
+
+mean = sample.mean()
+print("mean:",mean)
+std = sample.std()
+print("std:",std)
+median = thinkstats2.Median(sample)
+print("median",median)
+skewness = thinkstats2.Skewness(sample)
+print("skewness",skewness)
+PearsonSkewness = thinkstats2.PearsonMedianSkewness(sample)
+print("Pearson Skewness:", PearsonSkewness)
+cdf_mean = thinkstats2.Cdf(sample)[mean]
+print("cdf mean (fraction of households reporting below the mean:", cdf_mean)
+
+pdf = thinkstats2.EstimatedPdf(sample)
+thinkplot.Pdf(pdf, label="sample KDE")
+thinkplot.Show(xlabel = "income", ylabel = "PDF")
+
+#when you change the upper bound, it seems as though mean and std both increase with a higher upper bound,
+#decrease, with a lower bound. The traditional skewness increases with a higher upper bound, but the Pearson
+#skewness does not. This seems to be because the much larger increase in std is in the denominator, and
+#thus actually decreases the Pearson's Skewness value in this case.
+'''
