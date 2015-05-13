@@ -28,6 +28,7 @@ class Cookie(Pmf):
         like = hypo.Ratios[data]
         if like:
             hypo.Count[data] -= 1
+            hypo.Ratios = {i: hypo.Count[i]/(sum(hypo.Count.values())) for i in hypo.Count.keys()}
         return like
 
 def main():
