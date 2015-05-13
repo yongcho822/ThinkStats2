@@ -5,9 +5,12 @@ class Bowl():
 
     def __init__(self, mixes, name):
         self.Count = dict(mixes)
+        self.calcRatios()
+        self.name = name
+
+    def calcRatios(self):
         total = sum(self.Count.values())
         self.Ratios = {i: self.Count[i]/total for i in self.Count.keys()}
-        self.name = name
 
 class Cookie(Pmf):
 
@@ -28,7 +31,7 @@ class Cookie(Pmf):
         like = hypo.Ratios[data]
         if like:
             hypo.Count[data] -= 1
-            hypo.Ratios = {i: hypo.Count[i]/(sum(hypo.Count.values())) for i in hypo.Count.keys()}
+            hypo.calcRatios()
         return like
 
 def main():
