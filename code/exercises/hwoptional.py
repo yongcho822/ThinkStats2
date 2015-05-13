@@ -20,7 +20,6 @@ print(birthweightpercentilerank(8.3, firsts))
 '''
 
 
-
 '''
 #This is exercise 5.1:
 
