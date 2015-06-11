@@ -26,10 +26,10 @@ thinkplot.Scatter(ages_scatter, weights_scatter, alpha = 0.2)
 thinkplot.Show(xlabel = "mother's age", ylabel = "birth weight", axis = [10, 45, 0, 15])
 
 Pearsons = thinkstats2.Corr(live.agepreg, live.totalwgt_lb)
-print("Pearson's Corr:", Pearsons)
+print "Pearson's Corr:", Pearsons 
 
 Spearmans = thinkstats2.SpearmanCorr(live.agepreg, live.totalwgt_lb)
-print("Spearman's Corr:", Spearmans)
+print "Spearman's Corr:", Spearmans
 
 #Judging by the scatterplot, these two variables seem to have minimal correlation, as the dense chunk
 #of the scatterplot is basically horizontal.The small correlation values reinforce what we see. Older
