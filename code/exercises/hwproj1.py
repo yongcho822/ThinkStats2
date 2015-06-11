@@ -31,9 +31,11 @@ def WeightDiff(live, firsts, others):
 
     pooled_wgt_var = (n1 * varfirsts + n2 * varothers)/(n1+n2)
     d = wgtdiff / math.sqrt(pooled_wgt_var)
-    print("Cohen's D tells us the difference in means of firstborn babies weights and nonfirstborns weights is :", d, "standard deviations.", '\n'+
-          "Similar to the difference in pregnancy length (0.029), this may be slightly larger, but is still negligibly small.")
+    print "Cohen's D tells us the difference in means of firstborn babies weights and nonfirstborns weights is :", d,\
+        "standard deviations.", "\n",\
+          "Similar to the difference in pregnancy length (0.029), this may be slightly larger, but is still negligibly small."
 
+    
 def main(script):
 
     live, firsts, others = MakeFrames()
