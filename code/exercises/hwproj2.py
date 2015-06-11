@@ -21,7 +21,7 @@ biased_pmf = BiasPmf(pmf, label = 'biased')
 meanactual = pmf.Mean()
 meanbiased = biased_pmf.Mean()
 
-print("mean actual children under 18 count is", meanactual, '\n'+"mean perceived/biased children under 18 count is", meanbiased)
+print "Mean actual children under 18 count is", meanactual, "\n"+"Mean perceived/biased children under 18 count is", meanbiased
 #for some reason, this doesn't print if you display the charts first, then try to print.
 
 thinkplot.PrePlot(2)
