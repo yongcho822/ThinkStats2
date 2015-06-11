@@ -13,10 +13,10 @@ def birthweightpercentilerank(myweight, population):
     cdf = thinkstats2.Cdf(population.totalwgt_lb, label='birthweight')
     rank = cdf.PercentileRank(myweight)
     print(live.totalwgt_lb.shape)
-    # print(sorted(live.totalwgt_lb, reverse=True))
+    # print sorted(live.totalwgt_lb, reverse=True)
     return rank
 
-print(birthweightpercentilerank(8.3, firsts))
+print birthweightpercentilerank(8.3, firsts) 
 '''
 
 
@@ -31,7 +31,7 @@ import numpy as np
 mu = 178
 sigma = 7.7
 dist = scipy.stats.norm(loc=mu, scale=sigma)
-print(dist.cdf(185.42) - dist.cdf(177.8))
+print dist.cdf(185.42) - dist.cdf(177.8) 
 
 
 #just for kicks, lets practice plotting the normal CDF given these parameters:
@@ -82,17 +82,17 @@ thinkplot.Show(xlabel = 'household income', ylabel = 'CDF')
 sample = np.power(10, log_sample)
 
 mean = sample.mean()
-print("mean:",mean)
+print "mean:",mean
 std = sample.std()
-print("std:",std)
+print "std:",std 
 median = thinkstats2.Median(sample)
-print("median",median)
+print "median",median 
 skewness = thinkstats2.Skewness(sample)
-print("skewness",skewness)
+print "skewness",skewness
 PearsonSkewness = thinkstats2.PearsonMedianSkewness(sample)
-print("Pearson Skewness:", PearsonSkewness)
+print "Pearson Skewness:", PearsonSkewness 
 cdf_mean = thinkstats2.Cdf(sample)[mean]
-print("cdf mean (fraction of households reporting below the mean:", cdf_mean)
+print "fraction of households reporting below the mean:", cdf_mean
 
 pdf = thinkstats2.EstimatedPdf(sample)
 thinkplot.Pdf(pdf, label="sample KDE")
