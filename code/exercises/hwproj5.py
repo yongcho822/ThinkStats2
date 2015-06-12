@@ -9,13 +9,13 @@ def RMSE(estimates, actual):
     return math.sqrt(mse)
 
 def VertLine(x, y=1):
-        thinkplot.Plot([x, x], [0, y], color='0.8', linewidth=3)
+    thinkplot.Plot([x, x], [0, y], color='0.8', linewidth=3)
 
 def Estimate(n=10, m=1000):
     lam = 2
     means = []
     for _ in range(m):
-        xs = np.random.exponential(1/lam, n)
+        xs = np.random.exponential(1./lam, n)
         L = 1/np.mean(xs)
         means.append(L)
     stderr = RMSE(means, lam)
@@ -25,7 +25,7 @@ def PlotInitial(n=10, m=1000):
     lam = 2
     means = []
     for _ in range(m):
-        xs = np.random.exponential(1/lam, n)
+        xs = np.random.exponential(1./lam, n)
         L = 1/np.mean(xs)
         means.append(L)
     cdf = thinkstats2.Cdf(means)
@@ -39,7 +39,6 @@ def PlotInitial(n=10, m=1000):
     thinkplot.Show(xlabel = 'sample mean (L)', ylabel = 'CDF')
 
 PlotInitial()
-
 
 ranges = []
 stderrs = []
